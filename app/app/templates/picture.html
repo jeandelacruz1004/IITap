@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Take Picture</title>
+    <script src="../static/js/webcam.js"></script>
+</head>
+<body>
+    <span id="my_camera" style="width:320px; height:240px; display: inline;"></span> 
+    <span  id="my_result"></span>
+
+    
+    <script language="JavaScript">
+            Webcam.set({
+                width: 320,
+                height: 320,
+                dest_width: 320,
+                dest_height: 320,
+                image_format: 'jpeg',
+                jpeg_quality: 90,
+                force_flash: false
+            });
+        Webcam.attach('#my_camera');
+        var img_src;
+        function take_snapshot() {
+            Webcam.snap( function(data_uri) {
+                document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+                img_src = data_uri;
+                console.log(data_uri);
+            } );
+        }
+
+        function closePopup() {
+            confirm("Are you sure you want to exit?");
+            window.opener.HandlePictureResult(img_src);
+            window.close();
+        }
+      
+    </script>
+    <span><button><a href="javascript:void(take_snapshot())">Take Snapshot</a></button></span> <br>
+    <span><button onclick="closePopup()">Submit Photo</button></span>
+    
+</body>
+</html>

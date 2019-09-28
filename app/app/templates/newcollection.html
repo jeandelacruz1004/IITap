@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% import "bootstrap/wtf.html" as wtf %}
+<html lang="en">
+
+<head>
+<title>New Collection</title>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../static/img/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/newcollection.css">
+<!--===============================================================================================-->
+</head>
+
+<body>
+
+
+<div class="container-newcollection">
+    <div class="wrap-newcollection">
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+	    <ul class=flashes>
+	    {% for message in messages %}
+	      <li>{{ message }}</li>
+	    {% endfor %}
+	    </ul>
+	  {% endif %}
+	{% endwith %}
+
+      <form class="form-collection" method="POST" action="/collection/new_collection">
+        <h2 class="form-signin-heading">Create New Collection</h2>
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.collectionname) }}
+        {{ wtf.form_field(form.amount) }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Create Now</button>
+      </form>
+  </div>
+    </div> <!-- /container -->
+
+</body>
+
+</html>

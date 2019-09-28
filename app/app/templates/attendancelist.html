@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/dataTables.bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/buttons.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/attendancelist.css')}}">
+
+    <title style="font-size: 20px;">Event Name: {{ eventName.eventname }} <br> Date: {{ eventName.eventdate}}</title>
+    <!-- <p > Date: {{ eventName.eventdate }}</p> -->
+</head>
+
+<body class="container">
+        <h1 class="text-center">{{ eventName.eventname }}</h1>
+        <table id="maintable" class="display compact cell-border" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>Id Number</th>
+                    <th>Student Name</th>
+                    <th>Sign In</th>
+                    <th>Sign Out</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for attendance in query %}
+                <tr>
+                    <td>{{ attendance.studentID }}</td>
+                    <td>{{ attendance.Fname}} {{ attendance.Mname }} {{ attendance.Lname }} </td>
+                    <td>{{ attendance.signIn }}</td>
+                    <td>{{ attendance.signOut }}</td>
+                </tr>
+                {% endfor %}
+
+
+                <tfoot style="background-color: #c0c0c0; color: #ffffff; font-size: 0.9em; ">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            
+                        </tfoot>
+            </tbody>
+    
+            </table>
+    
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery-2.2.4.min.js')}}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery.dataTables.min.js')}}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/dataTables.buttons.min.js')}}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/jszip.min.js')}}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/pdfmake.min.js')}}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/vfs_fonts.js')}}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/buttons.html5.min.js')}}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/buttons.print.min.js')}}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/attendancelist.js')}}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/jquery.mark.min.js')}}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/datatables.mark.js')}}"></script>
+            <script type="text/javascript" src="{{ url_for('static', filename = 'js/buttons.colVis.min.js')}}"></script>
+    
+        </body>
+
+        
+</html>

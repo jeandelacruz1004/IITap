@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/scanning.css">
+    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+    <title>Scanning ID</title>
+</head>
+
+<body>
+    <br>
+    <center><b>
+            <h2>Tap your ID Now </h2>
+        </b></center>
+    <br>
+    <div class="ocrloader">
+        <em></em>
+        <div>
+            <img src="../static/img/id.jpg" alt="id_pic" id="id_pic">
+        </div>
+        <span></span>
+    </div>
+
+    <script>
+        var timer = setTimeout(function () {
+            window.location = '/scan_id/scanning'
+        }, 500);
+    </script>
+    <script type="text/javascript">
+        function test_func(data) {
+            var status = ""
+            console.log(data);
+            if (data) {
+                window.opener.HandlePopupResult(data);
+                window.close();
+            }
+        }
+        test_func({{data|safe}})
+
+
+    </script>
+</body>
+
+</html>

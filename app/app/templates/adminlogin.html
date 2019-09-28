@@ -1,0 +1,137 @@
+<!-- <!doctype html>
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block header %}
+<title>Admin Log In</title>
+
+    {% block styles %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/button.css') }}">
+{% endblock %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+
+</br><center><h1>ADMIN LOG IN</h1></center></br>
+    <div class="login-form">
+<div class="login-div">
+
+    <form action="{{ url_for('adminlogin') }}" method="post" role="form">
+        <dl>
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.username, placaholder = 'Enter Username') }}
+            {{ wtf.form_field(form.password, placaholder = 'Enter password') }}
+
+        </dl>
+        <button type="submit" class="btn btn-primary">Login Admin</button>
+
+    </form>
+    </div>
+</div></div></div>
+
+{% endblock %} -->
+{% import "bootstrap/wtf.html" as wtf %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Admin Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../static/img/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/css/util.css">
+	<link rel="stylesheet" type="text/css" href="../static/css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="../static/img/img-01.png" alt="IMG">
+				</div>
+
+				<form class="login100-form validate-form" action = "{{ url_for('adminlogin') }}" method = "POST" role = "form">
+                        {{ form.hidden_tag() }}
+                        <!-- {{ form.csrf_token }} -->
+					<span class="login100-form-title">
+						Admin Login
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                        <!-- <input class="input100" type="text" name="email" placeholder="Username"> -->
+                        {{ form.username(class="input100" ,type="text" , placeholder="Username") }}
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+                        {{ form.password (class="input100", type="password", placeholder="Password")}}
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+					
+					<div class="container-login100-form-btn">
+						<button type = "submit" class="login100-form-btn">
+							Login
+						</button>
+						<div class="alert">
+							{% with msg = get_flashed_messages() %}
+							{% if msg %}
+								{% for alert in msg %}
+									<h6>{{ msg }}<h6/>
+								{% endfor %}
+							{% endif %}
+							{% endwith %}
+							</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/bootstrap/js/popper.js"></script>
+	<script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="../static/js/login.js"></script>
+
+</body>
+</html>
