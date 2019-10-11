@@ -1,2 +1,10 @@
 
 .idea/
+.vscode
+*.pyc
+env/
+*.pyo
+venv/
+*iml
+*xml
+__pycache__/
