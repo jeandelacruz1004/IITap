@@ -8,3 +8,5 @@ venv/
 *iml
 *xml
 __pycache__/
+
+*.ttf
