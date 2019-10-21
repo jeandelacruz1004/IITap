@@ -17,3 +17,14 @@ class AuthDto:
         'email': fields.String(required=True, description='The email address'),
         'password': fields.String(required=True, description='The user password '),
     })
+
+class EventDto:
+    api = Namespace('event', description='event related operations')
+    event = api.model('event', {
+        'eventName': fields.String(required=True, description='name of the event'),
+        'eventDate': fields.String(required=True, description='date of the event'),
+        'eventDescription': fields.String(required=True, description='event description'),
+        'location': fields.String(required=True, description='event location'),
+        'fee': fields.String(description='event fee'),
+        'public_id': fields.String(description='event Identifier')
+    })
