@@ -6,6 +6,7 @@ from ..util.dto import AuthDto
 
 api = AuthDto.api
 user_auth = AuthDto.user_auth
+parser = AuthDto.parser
 
 
 @api.route('/login')
@@ -13,7 +14,7 @@ class UserLogin(Resource):
     """
         User Login Resource
     """
-    @api.doc('user login')
+    @api.doc('user login', parser=parser)
     @api.expect(user_auth, validate=True)
     def post(self):
         # get the post data

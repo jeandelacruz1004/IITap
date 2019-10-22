@@ -11,6 +11,14 @@ class UserDto:
         'public_id': fields.String(description='user Identifier')
     })
 
+    parser = api.parser()
+    parser.add_argument('email', type=str, help='user email address', location='form')
+    parser.add_argument('rfID', type=str, help='user id', location='form')
+    parser.add_argument('username', type=str, help='user username', location='form')
+    parser.add_argument('password', type=str, help='user password', location='form')
+    parser.add_argument('public_id', type=str, help='user identifier', location='form')
+
+
 class AuthDto:
     api = Namespace('auth', description='authentication related operations')
     user_auth = api.model('auth_details', {
@@ -18,13 +26,6 @@ class AuthDto:
         'password': fields.String(required=True, description='The user password '),
     })
 
-class EventDto:
-    api = Namespace('event', description='event related operations')
-    event = api.model('event', {
-        'eventName': fields.String(required=True, description='name of the event'),
-        'eventDate': fields.String(required=True, description='date of the event'),
-        'eventDescription': fields.String(required=True, description='event description'),
-        'location': fields.String(required=True, description='event location'),
-        'fee': fields.String(description='event fee'),
-        'public_id': fields.String(description='event Identifier')
-    })
+    parser = api.parser()
+    parser.add_argument('email', type=str, help='user email address', location='form')
+    parser.add_argument('password', type=str, help='user password', location='form')
