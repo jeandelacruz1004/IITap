@@ -6,7 +6,7 @@ from ..service.event_service import save_new_event, get_all_events, get_an_event
 
 api = EventDto.api
 _event = EventDto.event
-
+parser = EventDto.parser
 
 @api.route('/event')
 class EventList(Resource):
@@ -17,11 +17,11 @@ class EventList(Resource):
         return get_all_events()
 
     @api.response(201, 'Event successfully created.')
-    @api.doc('create a new event')
+    @api.doc('create a new event', parser=parser)
     @api.expect(_event, validate=True)
     def post(self):
         """Creates a new Event """
-        data = request.json
+        data = request.form
         return save_new_event(data=data)
 
 

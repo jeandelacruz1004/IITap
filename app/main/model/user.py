@@ -18,7 +18,7 @@ class User(db.Model):
     public_id = db.Column(db.String(100), unique=True)
     username = db.Column(db.String(50), unique=True)
     password_hash = db.Column(db.String(100))
-    creates = db.relationship('Event', backref='host', lazy=True)
+    events = db.relationship('Event', backref='host', lazy=True)
 
     @property
     def password(self):

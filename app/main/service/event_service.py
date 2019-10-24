@@ -6,7 +6,7 @@ from app.main.model.event import Event
 
 
 def save_new_event(data):
-    event = User.query.filter_by(eventName=data['eventName']).first()
+    event = Event.query.filter_by(eventName=data['eventName']).first()
     if not event:
         new_event = Event(
             public_id=str(uuid.uuid4()),
@@ -27,17 +27,17 @@ def save_new_event(data):
     else:
         response_object = {
             'status': 'fail',
-            'message': 'User already exists. Please Log in.',
+            'message': 'Event already exists. Please Log in.',
         }
         return response_object, 409
 
 
 def get_all_events():
-    return User.query.all()
+    return Event.query.all()
 
 
 def get_an_event(public_id):
-    return User.query.filter_by(public_id=public_id).first()
+    return Event.query.filter_by(public_id=public_id).first()
 
 
 def save_changes(data):
