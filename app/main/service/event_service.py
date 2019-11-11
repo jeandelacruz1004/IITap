@@ -12,6 +12,7 @@ def save_new_event(data):
             public_id=str(uuid.uuid4()),
             eventName=data['eventName'],
             dateCreated=datetime.datetime.utcnow(),
+            priority = data['priority'],
             eventDate=data['eventDate'],
             eventDescription=data['eventDescription'],
             location=data['location'],

@@ -9,6 +9,7 @@ class Event(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     eventName = db.Column(db.String(100), nullable=False)
     dateCreated = db.Column(db.DateTime, nullable=False)
+    priority = db.Column(db.Integer, nullable=False)
     eventDate = db.Column(db.DateTime, nullable=False)
     eventDescription = db.Column(db.Text, nullable=True)
     location = db.Column(db.Text, nullable=False)

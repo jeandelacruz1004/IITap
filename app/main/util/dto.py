@@ -35,6 +35,7 @@ class EventDto:
     event = api.model('event', {
         'eventName': fields.String(required=True, description='event name'),
         'eventDate': fields.String(required=True, description='event date'),
+        'priority': fields.String(required=True, description='event priority'),
         'eventDescription': fields.String(description='event description'),
         'location': fields.String(required=True, description='event location '),
         'fee': fields.String(required=True, description='event fee'),
@@ -45,6 +46,7 @@ class EventDto:
     parser = api.parser()
     parser.add_argument('eventName', type=str, help='event name', location='form')
     parser.add_argument('eventDate', type=str, help='event date', location='form')
+    parser.add_argument('priority', type=str, help='event priority', location='form')
     parser.add_argument('eventDescription', type=str, help='event description', location='form')
     parser.add_argument('location', type=str, help='event location', location='form')
     parser.add_argument('fee', type=str, help='event fee', location='form')
